@@ -645,7 +645,7 @@
           "container"
         ],
         "operationId": "Container_GetAcl",
-        "description": "",
+        "description": "gets the permissions for the specified container. The permissions indicate whether container data may be accessed publicly.",
         "parameters": [
           {
             "$ref": "#/parameters/Timeout"
@@ -714,7 +714,7 @@
           "container"
         ],
         "operationId": "Container_SetAcl",
-        "description": "",
+        "description": "sets the permissions for the specified container. The permissions indicate whether blobs in a container may be accessed publicly.",
         "parameters": [
           {
             "$ref": "#/parameters/ContainerAcl"
