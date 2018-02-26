@@ -15,6 +15,8 @@ directive:
   - suppress: R2022 # Add x-ms-examples
   - suppress: R2003 # etag / url is not a known format
   - suppress: R4000 # Missing description
-  - suppress: R2063 # OperationId format
+
+  # - suppress: R2063 # OperationId format. This directive is commented out because although it is not necessary for code generation,
+                      # fixing it will cause breaking changes to the generated code and so should be done for code generation.
 
 ```
