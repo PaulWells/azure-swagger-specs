@@ -512,16 +512,10 @@
         "description": "sets stored access policies for the queue that may be used with Shared Access Signatures",
         "parameters": [
           {
-            "$ref": "#/parameters/ContainerAcl"
+            "$ref": "#/parameters/QueueAcl"
           },
           {
             "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/LeaseId"
-          },
-          {
-            "$ref": "#/parameters/BlobPublicAccess"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -531,19 +525,9 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success.",
+          "204": {
+            "description": "No Content",
             "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
                 "type": "string",
@@ -564,15 +548,6 @@
         }
       },
       "parameters": [
-        {
-          "name": "restype",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "container"
-          ]
-        },
         {
           "name": "comp",
           "in": "query",
@@ -584,310 +559,22 @@
         }
       ]
     },
-    "/{containerName}?comp=lease&restype=container": {
-      "put": {
-        "tags": [
-          "container"
-        ],
-        "operationId": "Container_Lease",
-        "description": "establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite",
-        "parameters": [
-          {
-            "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/LeaseId"
-          },
-          {
-            "$ref": "#/parameters/LeaseAction"
-          },
-          {
-            "$ref": "#/parameters/LeaseBreakPeriod"
-          },
-          {
-            "$ref": "#/parameters/LeaseDuration"
-          },
-          {
-            "$ref": "#/parameters/ProposedLeaseId"
-          },
-          {
-            "$ref": "#/parameters/IfModifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfUnmodifiedSince"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/ClientRequestId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The Renew/Change/Release operation completed successfully.",
-            "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-lease-id": {
-                "x-ms-client-name": "LeaseId",
-                "type": "string",
-                "description": "Uniquely identifies a container's lease"
-              },
-              "x-ms-lease-time": {
-                "x-ms-client-name": "LeaseTime",
-                "type": "integer",
-                "description": "Approximate time remaining in the lease period, in seconds."
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            }
-          },
-          "201": {
-            "description": "The Acquire operation completed successfully.",
-            "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-lease-id": {
-                "x-ms-client-name": "LeaseId",
-                "type": "string",
-                "description": "Uniquely identifies a container's lease"
-              },
-              "x-ms-lease-time": {
-                "x-ms-client-name": "LeaseTime",
-                "type": "integer",
-                "description": "Approximate time remaining in the lease period, in seconds."
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            }
-          },
-          "202": {
-            "description": "The Release operation completed successfully.",
-            "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-lease-id": {
-                "x-ms-client-name": "LeaseId",
-                "type": "string",
-                "description": "Uniquely identifies a container's lease"
-              },
-              "x-ms-lease-time": {
-                "x-ms-client-name": "LeaseTime",
-                "type": "integer",
-                "description": "Approximate time remaining in the lease period, in seconds."
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "comp",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "lease"
-          ]
-        },
-        {
-          "name": "restype",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "container"
-          ]
-        }
-      ]
-    },
-    "/{containerName}?restype=container&comp=list": {
-      "get": {
-        "tags": [
-          "containers"
-        ],
-        "operationId": "Container_ListBlobs",
-        "description": "The List Blobs operation returns a list of the blobs under the specified container",
-        "parameters": [
-          {
-            "$ref": "#/parameters/Prefix"
-          },
-          {
-            "$ref": "#/parameters/Delimiter"
-          },
-          {
-            "$ref": "#/parameters/Marker"
-          },
-          {
-            "$ref": "#/parameters/MaxResults"
-          },
-          {
-            "$ref": "#/parameters/ListBlobsInclude"
-          },
-          {
-            "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/ClientRequestId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success.",
-            "headers": {
-              "Content-Type": {
-                "type": "string",
-                "description": "The content type specified for the blob. The default content type is 'application/octet-stream'"
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            },
-            "schema": {
-              "$ref": "#/definitions/ListBlobsResponse"
-            }
-          }
-        },
-        "x-ms-pageable": {
-          "nextLinkName": "NextMarker"
-        }
-      },
-      "parameters": [
-        {
-          "name": "restype",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "container"
-          ]
-        },
-        {
-          "name": "comp",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "list"
-          ]
-        }
-      ]
-    },
     "/{containerName}/{blob}": {
       "get": {
         "tags": [
-          "blob"
+          "message"
         ],
-        "operationId": "Blob_Get",
-        "description": "The Get Blob operation reads or downloads a blob from the system, including its metadata and properties. You can also call Get Blob to read a snapshot.",
+        "operationId": "Messages_Get",
+        "description": "The Get Messages operation retrieves one or more messages from the front of the queue.",
         "parameters": [
           {
-            "$ref": "#/parameters/Snapshot"
+            "$ref": "#/parameters/NumOfMessages"
+          },
+          {
+            "$ref": "#/parameters/VisibilityTimeout"
           },
           {
             "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/Range"
-          },
-          {
-            "$ref": "#/parameters/LeaseId"
-          },
-          {
-            "$ref": "#/parameters/GetRangeContentMD5"
-          },
-          {
-            "$ref": "#/parameters/IfModifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfUnmodifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfMatch"
-          },
-          {
-            "$ref": "#/parameters/IfNoneMatch"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -898,158 +585,8 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the content of the entire blob.",
+            "description": "OK",
             "headers": {
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-meta": {
-                "type": "string",
-                "x-ms-client-name": "Metadata",
-                "x-ms-header-collection-prefix": "x-ms-meta-"
-              },
-              "Content-Length": {
-                "type": "integer",
-                "format": "int64",
-                "description": "The number of bytes present in the response body."
-              },
-              "Content-Type": {
-                "type": "string",
-                "description": "The content type specified for the blob. The default content type is 'application/octet-stream'"
-              },
-              "Content-Range": {
-                "type": "string",
-                "description": "Indicates the range of bytes returned in the event that the client requested a subset of the blob by setting the 'Range' request header."
-              },
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Content-MD5": {
-                "type": "string",
-                "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
-              },
-              "Content-Encoding": {
-                "type": "string",
-                "description": "This header returns the value that was specified for the Content-Encoding request header"
-              },
-              "Cache-Control": {
-                "type": "string",
-                "description": "This header is returned if it was previously specified for the blob."
-              },
-              "Content-Disposition": {
-                "type": "string",
-                "description": "This header returns the value that was specified for the 'x-ms-blob-content-disposition' header. The Content-Disposition response header field conveys additional information about how to process the response payload, and also can be used to attach additional metadata. For example, if set to attachment, it indicates that the user-agent should not display the response, but instead show a Save As dialog with a filename other than the blob name specified."
-              },
-              "Content-Language": {
-                "type": "string",
-                "description": "This header returns the value that was specified for the Content-Language request header."
-              },
-              "x-ms-blob-sequence-number": {
-                "x-ms-client-name": "BlobSequenceNumber",
-                "type": "string",
-                "description": "The current sequence number for a page blob. This header is not returned for block blobs or append blobs"
-              },
-              "x-ms-blob-type": {
-                "x-ms-client-name": "BlobType",
-                "description": "The blob's type.",
-                "type": "string",
-                "enum": [
-                  "BlockBlob",
-                  "PageBlob",
-                  "AppendBlob"
-                ],
-                "x-ms-enum": {
-                  "name": "BlobType",
-                  "modelAsString": false
-                }
-              },
-              "x-ms-copy-completion-time": {
-                "x-ms-client-name": "CopyCompletionTime",
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Conclusion time of the last attempted Copy Blob operation where this blob was the destination blob. This value can specify the time of a completed, aborted, or failed copy attempt. This header does not appear if a copy is pending, if this blob has never been the destination in a Copy Blob operation, or if this blob has been modified after a concluded Copy Blob operation using Set Blob Properties, Put Blob, or Put Block List."
-              },
-              "x-ms-copy-status-description": {
-                "x-ms-client-name": "CopyStatusDescription",
-                "type": "string",
-                "description": "Only appears when x-ms-copy-status is failed or pending. Describes the cause of the last fatal or non-fatal copy operation failure. This header does not appear if this blob has never been the destination in a Copy Blob operation, or if this blob has been modified after a concluded Copy Blob operation using Set Blob Properties, Put Blob, or Put Block List"
-              },
-              "x-ms-copy-id": {
-                "x-ms-client-name": "CopyId",
-                "type": "string",
-                "description": "String identifier for this copy operation. Use with Get Blob Properties to check the status of this copy operation, or pass to Abort Copy Blob to abort a pending copy."
-              },
-              "x-ms-copy-progress": {
-                "x-ms-client-name": "CopyProgress",
-                "type": "string",
-                "description": "Contains the number of bytes copied and the total bytes in the source in the last attempted Copy Blob operation where this blob was the destination blob. Can show between 0 and Content-Length bytes copied. This header does not appear if this blob has never been the destination in a Copy Blob operation, or if this blob has been modified after a concluded Copy Blob operation using Set Blob Properties, Put Blob, or Put Block List"
-              },
-              "x-ms-copy-source": {
-                "x-ms-client-name": "CopySource",
-                "type": "string",
-                "description": "URL up to 2 KB in length that specifies the source blob or file used in the last attempted Copy Blob operation where this blob was the destination blob. This header does not appear if this blob has never been the destination in a Copy Blob operation, or if this blob has been modified after a concluded Copy Blob operation using Set Blob Properties, Put Blob, or Put Block List."
-              },
-              "x-ms-copy-status": {
-                "x-ms-client-name": "CopyStatus",
-                "description": "State of the copy operation identified by x-ms-copy-id.",
-                "type": "string",
-                "enum": [
-                  "pending",
-                  "success",
-                  "aborted",
-                  "failed"
-                ],
-                "x-ms-enum": {
-                  "name": "CopyStatusType",
-                  "modelAsString": false
-                }
-              },
-              "x-ms-lease-duration": {
-                "x-ms-client-name": "LeaseDuration",
-                "description": "When a blob is leased, specifies whether the lease is of infinite or fixed duration.",
-                "type": "string",
-                "enum": [
-                  "infinite",
-                  "fixed"
-                ],
-                "x-ms-enum": {
-                  "name": "LeaseDurationType",
-                  "modelAsString": false
-                }
-              },
-              "x-ms-lease-state": {
-                "x-ms-client-name": "LeaseState",
-                "description": "Lease state of the blob.",
-                "type": "string",
-                "enum": [
-                  "available",
-                  "leased",
-                  "expired",
-                  "breaking",
-                  "broken"
-                ],
-                "x-ms-enum": {
-                  "name": "LeaseStateType",
-                  "modelAsString": false
-                }
-              },
-              "x-ms-lease-status": {
-                "x-ms-client-name": "LeaseStatus",
-                "description": "The current lease status of the blob.",
-                "type": "string",
-                "enum": [
-                  "locked",
-                  "unlocked"
-                ],
-                "x-ms-enum": {
-                  "name": "LeaseStatusType",
-                  "modelAsString": false
-                }
-              },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
                 "type": "string",
@@ -1060,34 +597,14 @@
                 "type": "string",
                 "description": "Indicates the version of the Queue service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
               },
-              "Accept-Ranges": {
-                "type": "string",
-                "description": "Indicates that the service supports requests for partial blob content."
-              },
               "Date": {
                 "type": "string",
                 "format": "date-time-rfc1123",
                 "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              },
-              "x-ms-blob-committed-block-count": {
-                "x-ms-client-name": "BlobCommittedBlockCount",
-                "type": "string",
-                "description": "The number of committed blocks present in the blob. This header is returned only for append blobs."
-              },
-              "x-ms-server-encrypted": {
-                "x-ms-client-name": "IsServerEncrypted",
-                "type": "boolean",
-                "description": "The value of this header is set to true if the blob data and application metadata are completely encrypted using the specified algorithm. Otherwise, the value is set to false (when the blob is unencrypted, or if only parts of the blob/application metadata are encrypted)."
-              },
-              "x-ms-blob-content-md5": {
-                "x-ms-client-name": "BlobContentMD5",
-                "type": "string",
-                "description": "If the blob has a MD5 hash, and if request contains range header (Range or x-ms-range), this response header is returned with the value of the whole blob's MD5 value. This value may or may not be equal to the value returned in Content-MD5 header, with the latter calculated from the requested range"
               }
             },
             "schema": {
-              "type": "object",
-              "format": "file"
+              "$ref": "#/definitions/QueueMessagesList"
             }
           },
           "206": {
@@ -3963,6 +3480,13 @@
         }
       }
     },
+    "QueueMessagesList": {
+      "description": "Queue Messages List.",
+      "type": "object",
+      "properties": {
+        
+      }
+    },
     "SignedIdentifiers": {
       "description": "a collection of signed identifiers",
       "type": "array",
@@ -4267,14 +3791,14 @@
       "x-ms-parameter-location": "method",
       "description": "Cache control for given resource"
     },
-    "ContainerAcl": {
-      "name": "containerAcl",
+    "QueueAcl": {
+      "name": "queueAcl",
       "in": "body",
       "schema": {
         "$ref": "#/definitions/SignedIdentifiers"
       },
       "x-ms-parameter-location": "method",
-      "description": "the acls for the container"
+      "description": "the acls for the queue"
     },
     "CopyActionAbort": {
       "name": "x-ms-copy-action",
@@ -4551,6 +4075,16 @@
       "description": "Optional. Specifies a user-defined name-value pair associated with the blob. If no name-value pairs are specified, the operation will copy the metadata from the source blob or file to the destination blob. If one or more name-value pairs are specified, the destination blob is created with the specified metadata, and metadata is not copied from the source blob or file. Note that beginning with version 2009-09-19, metadata names must adhere to the naming rules for C# identifiers. See Naming and Referencing Containers, Blobs, and Metadata for more information.",
       "x-ms-header-collection-prefix": "x-ms-meta-"
     },
+    "NumOfMessages": {
+      "name": "numofmessages",
+      "x-ms-client-name": "numberOfMessages",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "minimum": 1,
+      "x-ms-parameter-location": "method",
+      "description": "Optional. A nonzero integer value that specifies the number of messages to retrieve from the queue, up to a maximum of 32. If fewer are visible, the visible messages are returned. By default, a single message is retrieved from the queue with this operation."
+    },
     "PageWrite": {
       "name": "x-ms-page-write",
       "x-ms-client-name": "pageWrite",
@@ -4695,6 +4229,16 @@
       "minimum": 0,
       "x-ms-parameter-location": "method",
       "description": "The timeout parameter is expressed in seconds. For more information, see <a href=\"https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/setting-timeouts-for-blob-service-operations\">Setting Timeouts for Blob Service Operations.</a>"
+    },
+    "VisibilityTimeout": {
+      "name": "visibilitytimeout",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 604800,
+      "x-ms-parameter-location": "method",
+      "description": "Optional. Specifies the new visibility timeout value, in seconds, relative to server time. The default value is 30 seconds. A specified value must be larger than or equal to 1 second, and cannot be larger than 7 days, or larger than 2 hours on REST protocol versions prior to version 2011-08-18. The visibility timeout of a message can be set to a value later than the expiry time."
     }
   }
 }
