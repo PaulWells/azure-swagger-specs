@@ -3876,7 +3876,6 @@
     },
     "Delimiter": {
       "name": "delimiter",
-      "x-ms-client-name": "delimiter",
       "description": "When the request includes this parameter, the operation returns a BlobPrefix element in the response body that acts as a placeholder for all blobs whose names begin with the same substring up to the appearance of the delimiter character. The delimiter may be a single character or a string.",
       "type": "string",
       "x-ms-parameter-location": "method",
