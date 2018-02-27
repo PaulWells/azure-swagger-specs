@@ -4123,12 +4123,14 @@
       "properties": {
         "Start": {
           "type": "integer",
+          "format": "int64",
           "xml": {
             "name": "Start"
           }
         },
         "End": {
           "type": "integer",
+          "format": "int64",
           "xml": {
             "name": "End"
           }
