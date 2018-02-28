@@ -909,7 +909,7 @@
       "xml": {
         "name": "EnumerationResults"
       },
-      "description": "An enumeration of containers",
+      "description": "The object returned when calling List Queues on a Queue Service.",
       "type": "object",
       "required": [
         "ServiceEndpoint",
@@ -1058,7 +1058,7 @@
           "type": "string"
         },
         "Enabled": {
-          "description": "Indicates whether metrics are enabled for the Blob service.",
+          "description": "Indicates whether metrics are enabled for the Queue service.",
           "type": "boolean"
         },
         "IncludeAPIs": {
@@ -1071,7 +1071,7 @@
       }
     },
     "Queue": {
-      "description": "<placeholder>",
+      "description": "An Azure Storage Queue.",
       "type": "object",
       "required": [
         "Name"
@@ -1079,7 +1079,7 @@
       "properties": {
         "Name": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The name of the Queue."
         },
         "Metadata": {
           "$ref": "#/definitions/Metadata"
@@ -1091,50 +1091,61 @@
       }
     },
     "QueueMessage": {
-      "description": "<placeholder>",
+      "description": "A Message object which can be stored in a Queue",
       "type": "object",
+      "required": [
+        "MessageText"
+      ],
       "properties": {
         "MessageText": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The content of the message"
         }
       }
     },
     "QueueMessagesListItemGet": {
-      "description": "<placeholder>",
+      "description": "The object returned in the QueueMessageList array when calling Get Messages on a Queue.",
       "type": "object",
+      "required": [
+        "MessageId",
+        "InsertionTime",
+        "ExpirationTime",
+        "PopReceipt",
+        "TimeNextVisible",
+        "MessageText"
+      ],
       "properties": {
         "MessageId": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The Id of the Message."
         },
         "InsertionTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time the Message was inserted into the Queue."
         },
         "ExpirationTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time that the Message will expire and be automatically deleted."
         },
         "PopReceipt": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "This value is required to delete the Message. If deletion fails using this popreceipt then the message has been dequeued by another client."
         },
         "TimeNextVisible": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time that the message will again become visible in the Queue."
         },
         "DequeueCount": {
           "type": "integer",
           "format": "int64",
-          "description": "<placeholder>"
+          "description": "The number of times the message has been dequeued."
         },
         "MessageText": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The content of the Message."
         }
       },
       "xml": {
@@ -1143,31 +1154,37 @@
       }
     },
     "QueueMessagesListItemPeek": {
-      "description": "<placeholder>",
+      "description": "The object returned in the QueueMessageList array when calling Peek Messages on a Queue",
       "type": "object",
+      "required": [
+        "MessageId",
+        "InsertionTime",
+        "ExpirationTime",
+        "MessageText"
+      ],
       "properties": {
         "MessageId": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The Id of the Message"
         },
         "InsertionTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time the Message was inserted into the Queue"
         },
         "ExpirationTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time that the Message will expire and be automatically deleted."
         },
         "DequeueCount": {
           "type": "integer",
           "format": "int64",
-          "description": "<placeholder>"
+          "description": "The number of times the message has been dequeued."
         },
         "MessageText": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The content of the Message."
         }
       },
       "xml": {
@@ -1176,31 +1193,38 @@
       }
     },
     "QueueMessagesListItemPut": {
-      "description": "<placeholder>",
+      "description": "The object returned in the QueueMessageList array when calling Put Message on a Queue",
       "type": "object",
+      "required": [
+        "MessageId",
+        "InsertionTime",
+        "ExpirationTime",
+        "PopReceipt",
+        "TimeNextVisible"
+      ],
       "properties": {
         "MessageId": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "The Id of the Message"
         },
         "InsertionTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time the Message was inserted into the Queue"
         },
         "ExpirationTime": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time that the Message will expire and be automatically deleted."
         },
         "PopReceipt": {
           "type": "string",
-          "description": "<placeholder>"
+          "description": "This value is required to delete the Message. If deletion fails using this popreceipt then the message has been dequeued by another client."
         },
         "TimeNextVisible": {
           "type": "string",
           "format": "date-time-rfc1123",
-          "description": "<placeholder>"
+          "description": "The time that the message will again become visible in the Queue."
         }
       },
       "xml": {
@@ -1209,7 +1233,7 @@
       }
     },
     "QueueMessagesListGet": {
-      "description": "<placeholder>",
+      "description": "The object returned when calling Get Messages on a Queue",
       "type": "array",
       "items": {
         "$ref": "#/definitions/QueueMessagesListItemGet",
@@ -1223,7 +1247,7 @@
       }
     },
     "QueueMessagesListPeek": {
-      "description": "<placeholder>",
+      "description": "The object returned when calling Peek Messages on a Queue",
       "type": "array",
       "items": {
         "$ref": "#/definitions/QueueMessagesListItemPeek",
@@ -1237,7 +1261,7 @@
       }
     },
     "QueueMessagesListPut": {
-      "description": "<placeholder>",
+      "description": "The object returned when calling Put Message on a Queue",
       "type": "array",
       "items": {
         "$ref": "#/definitions/QueueMessagesListItemPut",
@@ -1309,11 +1333,11 @@
           "$ref": "#/definitions/Logging"
         },
         "HourMetrics": {
-          "description": "A summary of request statistics grouped by API in hourly aggregates for blobs",
+          "description": "A summary of request statistics grouped by API in hourly aggregates for queues",
           "$ref": "#/definitions/Metrics"
         },
         "MinuteMetrics": {
-          "description": "a summary of request statistics grouped by API in minute aggregates for blobs",
+          "description": "a summary of request statistics grouped by API in minute aggregates for queues",
           "$ref": "#/definitions/Metrics"
         },
         "Cors": {
@@ -1330,7 +1354,7 @@
           }
         },
         "DefaultServiceVersion": {
-          "description": "The default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions",
+          "description": "The default version to use for requests to the Queue service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions",
           "type": "string"
         },
         "DeleteRetentionPolicy": {
@@ -1353,7 +1377,7 @@
   "parameters": {
     "Url": {
       "name": "url",
-      "description": "The URL of the service account, container, or blob that is the targe of the desired operation.",
+      "description": "The URL of the service account, queue or message that is the targe of the desired operation.",
       "required": true,
       "type": "string",
       "in": "path",
@@ -1445,7 +1469,7 @@
       "type": "integer",
       "minimum": -1,
       "x-ms-parameter-location": "method",
-      "description": "<placeholder>"
+      "description": "Optional. Specifies the time-to-live interval for the message, in seconds. Prior to version 2017-07-29, the maximum time-to-live allowed is 7 days. For version 2017-07-29 or later, the maximum time-to-live can be any positive number, as well as -1 indicating that the message does not expire. If this parameter is omitted, the default time-to-live is 7 days."
     },
     "Metadata": {
       "name": "x-ms-meta",
@@ -1455,7 +1479,7 @@
       "type": "string",
       "pattern": "^[a-zA-Z]+$",
       "x-ms-parameter-location": "method",
-      "description": "Optional. Specifies a user-defined name-value pair associated with the blob. If no name-value pairs are specified, the operation will copy the metadata from the source blob or file to the destination blob. If one or more name-value pairs are specified, the destination blob is created with the specified metadata, and metadata is not copied from the source blob or file. Note that beginning with version 2009-09-19, metadata names must adhere to the naming rules for C# identifiers. See Naming and Referencing Containers, Blobs, and Metadata for more information.",
+      "description": "Optional. Include this parameter to specify that the queue's metadata be returned as part of the response body. Note that metadata requested with this parameter must be stored in accordance with the naming restrictions imposed by the 2009-09-19 version of the Queue service. Beginning with this version, all metadata names must adhere to the naming conventions for C# identifiers.",
       "x-ms-header-collection-prefix": "x-ms-meta-"
     },
     "NumOfMessages": {
@@ -1493,7 +1517,7 @@
         "$ref": "#/definitions/QueueMessage"
       },
       "x-ms-parameter-location": "method",
-      "description": "<placeholder>"
+      "description": "A Message object which can be stored in a Queue"
     },
     "QueueMessagesListGet": {
       "name": "QueueMessagesList",
@@ -1503,7 +1527,7 @@
         "$ref": "#/definitions/QueueMessagesListGet"
       },
       "x-ms-parameter-location": "method",
-      "description": "<placeholder>"
+      "description": "The object returned when calling Get Messages on a Queue."
     },
     "QueueMessagesListPeek": {
       "name": "QueueMessagesList",
@@ -1513,7 +1537,7 @@
         "$ref": "#/definitions/QueueMessagesListPeek"
       },
       "x-ms-parameter-location": "method",
-      "description": "<placeholder>"
+      "description": "The object returned when calling Peek Messages on a Queue."
     },
     "QueueMessagesListPut": {
       "name": "QueueMessagesList",
@@ -1523,7 +1547,7 @@
         "$ref": "#/definitions/QueueMessagesListPut"
       },
       "x-ms-parameter-location": "method",
-      "description": "<placeholder>"
+      "description": "The object returned when calling Put Message on a Queue."
     },
     "StorageServiceProperties": {
       "name": "StorageServiceProperties",
