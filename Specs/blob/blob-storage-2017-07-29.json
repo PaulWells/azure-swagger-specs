@@ -274,7 +274,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_Create",
+        "operationId": "Containers_Create",
         "description": "creates a new container under the specified account. If the container with the same name already exists, the operation fails",
         "parameters": [
           {
@@ -330,7 +330,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_GetProperties",
+        "operationId": "Containers_GetProperties",
         "description": "returns all user-defined metadata and system properties for the specified container. The data returned does not include the container's list of blobs",
         "parameters": [
           {
@@ -443,7 +443,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_Delete",
+        "operationId": "Containers_Delete",
         "description": "operation marks the specified container for deletion. The container and any blobs contained within it are later deleted during garbage collection",
         "parameters": [
           {
@@ -505,7 +505,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_GetMetadata",
+        "operationId": "Containers_GetMetadata",
         "description": "returns all user-defined metadata for the container",
         "parameters": [
           {
@@ -563,7 +563,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_SetMetadata",
+        "operationId": "Containers_SetMetadata",
         "description": "operation sets one or more user-defined name-value pairs for the specified container.",
         "parameters": [
           {
@@ -644,7 +644,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_GetAcl",
+        "operationId": "Containers_GetAcl",
         "description": "gets the permissions for the specified container. The permissions indicate whether container data may be accessed publicly.",
         "parameters": [
           {
@@ -713,7 +713,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_SetAcl",
+        "operationId": "Containers_SetAcl",
         "description": "sets the permissions for the specified container. The permissions indicate whether blobs in a container may be accessed publicly.",
         "parameters": [
           {
@@ -800,7 +800,7 @@
         "tags": [
           "container"
         ],
-        "operationId": "Container_Lease",
+        "operationId": "Containers_Lease",
         "description": "establishes and manages a lock on a container for delete operations. The lock duration can be 15 to 60 seconds, or can be infinite",
         "parameters": [
           {
@@ -983,7 +983,7 @@
         "tags": [
           "containers"
         ],
-        "operationId": "Container_ListBlobs",
+        "operationId": "Containers_ListBlobs",
         "description": "The List Blobs operation returns a list of the blobs under the specified container",
         "parameters": [
           {
@@ -1070,7 +1070,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_Get",
+        "operationId": "Blobs_Get",
         "description": "The Get Blob operation reads or downloads a blob from the system, including its metadata and properties. You can also call Get Blob to read a snapshot.",
         "parameters": [
           {
@@ -1500,7 +1500,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_GetProperties",
+        "operationId": "Blobs_GetProperties",
         "description": "The Get Blob Properties operation returns all user-defined metadata, standard HTTP properties, and system properties for the blob. It does not return the content of the blob.",
         "parameters": [
           {
@@ -1744,7 +1744,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_Delete",
+        "operationId": "Blobs_Delete",
         "description": "If the storage account's soft delete feature is disabled then, when a blob is deleted, it is permanently removed from the storage account. If the storage account's soft delete feature is enabled, then, when a blob is deleted, it is marked for deletion and becomes inaccessible immediately. However, the blob service retains the blob or snapshot for the number of days specified by the DeleteRetentionPolicy section of [Storage service properties] (Set-Blob-Service-Properties.md). After the specified number of days has passed, the blob's data is permanently removed from the storage account. Note that you continue to be charged for the soft-deleted blob's storage until it is permanently removed. Use the List Blobs API and specify the \"include=deleted\" query parameter to discover which blobs and snapshots have been soft deleted. You can then use the Undelete Blob API to restore a soft-deleted blob. All other operations on a soft-deleted blob or snapshot causes the service to return an HTTP status code of 404 (ResourceNotFound).",
         "parameters": [
           {
@@ -2137,7 +2137,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_Undelete",
+        "operationId": "Blobs_Undelete",
         "description": "Undelete a blob that was previously soft deleted",
         "parameters": [
           {
@@ -2190,7 +2190,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_SetProperties",
+        "operationId": "Blobs_SetProperties",
         "description": "The Set Blob Properties operation sets system properties on the blob",
         "parameters": [
           {
@@ -2300,7 +2300,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_GetMetadata",
+        "operationId": "Blobs_GetMetadata",
         "description": "The Get Blob Metadata operation returns all user-defined metadata for the specified blob or snapshot",
         "parameters": [
           {
@@ -2373,7 +2373,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_SetMetadata",
+        "operationId": "Blobs_SetMetadata",
         "description": "The Set Blob Metadata operation sets user-defined metadata for the specified blob as one or more name-value pairs",
         "parameters": [
           {
@@ -2459,7 +2459,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_Lease",
+        "operationId": "Blobs_Lease",
         "description": "The Lease Blob operation establishes and manages a lock on a blob for write and delete operations",
         "parameters": [
           {
@@ -2639,7 +2639,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_TakeSnapshot",
+        "operationId": "Blobs_TakeSnapshot",
         "description": "The Snapshot Blob operation creates a read-only snapshot of a blob",
         "parameters": [
           {
@@ -2725,7 +2725,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_Copy",
+        "operationId": "Blobs_Copy",
         "description": "The Copy Blob operation copies a blob or an internet resource to a new blob.",
         "parameters": [
           {
@@ -2834,7 +2834,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blob_AbortCopy",
+        "operationId": "Blobs_AbortCopy",
         "description": "The Abort Copy Blob operation aborts a pending Copy Blob operation, and leaves a destination blob with zero length and full metadata.",
         "parameters": [
           {
@@ -2896,7 +2896,7 @@
         "tags": [
           "blobs"
         ],
-        "operationId": "Blob_SetBlobTier",
+        "operationId": "Blobs_SetBlobTier",
         "description": "The Set Blob Tier operation sets the tier on a blob. The operation is allowed on a page blob in a premium storage account and on a block blob in a blob storage account (locally redundant storage only). A premium page blob's tier determines the allowed size, IOPS, and bandwidth of the blob. A block blob's tier determines Hot/Cool/Archive storage type. This operation does not update the blob's ETag.",
         "parameters": [
           {
@@ -3935,14 +3935,14 @@
           "type": "string"
         },
         "Blobs": {
-          "$ref": "#/definitions/Blobs"
+          "$ref": "#/definitions/BlobList"
         },
         "NextMarker": {
           "type": "string"
         }
       }
     },
-    "Blobs": {
+    "BlobList": {
       "type": "object",
       "properties": {
         "BlobPrefix": {
