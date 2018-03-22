@@ -2608,6 +2608,12 @@
             "$ref": "#/parameters/IfUnmodifiedSince"
           },
           {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          },
+          {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -2683,6 +2689,12 @@
             "$ref": "#/parameters/IfUnmodifiedSince"
           },
           {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          },
+          {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -2756,6 +2768,12 @@
           },
           {
             "$ref": "#/parameters/IfUnmodifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -2841,6 +2859,12 @@
             "$ref": "#/parameters/IfUnmodifiedSince"
           },
           {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          },
+          {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -2919,6 +2943,12 @@
           },
           {
             "$ref": "#/parameters/IfUnmodifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
