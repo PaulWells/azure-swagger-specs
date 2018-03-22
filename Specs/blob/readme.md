@@ -15,5 +15,6 @@ directive:
   - suppress: R2022 # Add x-ms-examples
   - suppress: R2003 # etag / url is not a known format
   - suppress: R4000 # Missing description
+  - suppress: R4001 # url defined in global param without extension
 
 ```
