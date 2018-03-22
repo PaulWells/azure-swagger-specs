@@ -752,9 +752,6 @@
             "$ref": "#/parameters/LeaseActionAcquire"
           },
           {
-            "$ref": "#/parameters/LeaseBreakPeriod"
-          },
-          {
             "$ref": "#/parameters/LeaseDuration"
           },
           {
@@ -2597,9 +2594,6 @@
           },
           {
             "$ref": "#/parameters/LeaseActionAcquire"
-          },
-          {
-            "$ref": "#/parameters/LeaseBreakPeriod"
           },
           {
             "$ref": "#/parameters/LeaseDuration"
