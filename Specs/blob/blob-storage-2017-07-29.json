@@ -2508,8 +2508,8 @@
         "tags": [
           "blob"
         ],
-        "operationId": "Blobs_TakeSnapshot",
-        "description": "The Snapshot Blob operation creates a read-only snapshot of a blob",
+        "operationId": "Blobs_CreateSnapshot",
+        "description": "The Create Snapshot operation creates a read-only snapshot of a blob",
         "parameters": [
           {
             "$ref": "#/parameters/Timeout"
