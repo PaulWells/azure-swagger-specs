@@ -337,7 +337,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -450,7 +450,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -512,7 +512,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/Metadata"
@@ -593,7 +593,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -665,7 +665,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobPublicAccess"
@@ -749,13 +749,16 @@
             "$ref": "#/parameters/Timeout"
           },
           {
+            "$ref": "#/parameters/LeaseIdOptional"
+          },
+          {
             "$ref": "#/parameters/LeaseActionAcquire"
           },
           {
             "$ref": "#/parameters/LeaseDuration"
           },
           {
-            "$ref": "#/parameters/ProposedLeaseId"
+            "$ref": "#/parameters/ProposedLeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -836,7 +839,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionRelease"
@@ -920,7 +923,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionRenew"
@@ -1098,13 +1101,13 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionChange"
           },
           {
-            "$ref": "#/parameters/ProposedLeaseId"
+            "$ref": "#/parameters/ProposedLeaseIdRequired"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -1367,7 +1370,7 @@
             "$ref": "#/parameters/Range"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/GetRangeContentMD5"
@@ -1794,7 +1797,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2038,7 +2041,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/DeleteSnapshots"
@@ -2125,7 +2128,7 @@
             "$ref": "#/parameters/Metadata"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobContentDisposition"
@@ -2238,7 +2241,7 @@
             "$ref": "#/parameters/Metadata"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobContentDisposition"
@@ -2348,7 +2351,7 @@
             "$ref": "#/parameters/Metadata"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobContentDisposition"
@@ -2496,7 +2499,7 @@
             "$ref": "#/parameters/BlobContentLanguage"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2600,7 +2603,7 @@
             "$ref": "#/parameters/BlobContentLanguage"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2707,7 +2710,7 @@
             "$ref": "#/parameters/BlobContentLanguage"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2805,7 +2808,7 @@
             "$ref": "#/parameters/Metadata"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2888,13 +2891,16 @@
             "$ref": "#/parameters/Timeout"
           },
           {
+            "$ref": "#/parameters/LeaseIdOptional"
+          },
+          {
             "$ref": "#/parameters/LeaseActionAcquire"
           },
           {
             "$ref": "#/parameters/LeaseDuration"
           },
           {
-            "$ref": "#/parameters/ProposedLeaseId"
+            "$ref": "#/parameters/ProposedLeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -2972,7 +2978,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionRelease"
@@ -3053,7 +3059,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionRenew"
@@ -3139,13 +3145,13 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdRequired"
           },
           {
             "$ref": "#/parameters/LeaseActionChange"
           },
           {
-            "$ref": "#/parameters/ProposedLeaseId"
+            "$ref": "#/parameters/ProposedLeaseIdRequired"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -3329,7 +3335,7 @@
             "$ref": "#/parameters/IfNoneMatch"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -3430,7 +3436,7 @@
             "$ref": "#/parameters/CopySource"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/SourceLeaseId"
@@ -3512,7 +3518,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/CopyActionAbort"
@@ -3649,7 +3655,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -3732,7 +3738,7 @@
             "$ref": "#/parameters/Metadata"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobContentDisposition"
@@ -3823,7 +3829,7 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -3917,7 +3923,7 @@
             "$ref": "#/parameters/PageWriteUpdate"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfSequenceNumberLessThanOrEqualTo"
@@ -4033,7 +4039,7 @@
             "$ref": "#/parameters/PageWriteClear"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfSequenceNumberLessThanOrEqualTo"
@@ -4236,7 +4242,7 @@
             "$ref": "#/parameters/Range"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -4430,7 +4436,7 @@
             "$ref": "#/parameters/ContentLength"
           },
           {
-            "$ref": "#/parameters/LeaseId"
+            "$ref": "#/parameters/LeaseIdOptional"
           },
           {
             "$ref": "#/parameters/BlobConditionMaxSize"
@@ -5937,11 +5943,20 @@
       "x-ms-parameter-location": "method",
       "description": "Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires. A non-infinite lease can be between 15 and 60 seconds. A lease duration cannot be changed using renew or change."
     },
-    "LeaseId": {
+    "LeaseIdOptional": {
       "name": "x-ms-lease-id",
       "x-ms-client-name": "leaseId",
       "in": "header",
       "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method",
+      "description": "If specified, the operation only succeeds if the container's lease is active and matches this ID."
+    },
+    "LeaseIdRequired": {
+      "name": "x-ms-lease-id",
+      "x-ms-client-name": "leaseId",
+      "in": "header",
+      "required": true,
       "type": "string",
       "x-ms-parameter-location": "method",
       "description": "If specified, the operation only succeeds if the container's lease is active and matches this ID."
@@ -6022,11 +6037,20 @@
       "x-ms-parameter-location": "method",
       "description": "Optional in version 2015-07-08 and newer. The prevsnapshot parameter is a DateTime value that specifies that the response will contain only pages that were changed between target blob and previous snapshot. Changed pages include both updated and cleared pages. The target blob may be a snapshot, as long as the snapshot specified by prevsnapshot is the older of the two. Note that incremental snapshots are currently supported only for blobs created on or after January 1, 2016."
     },
-    "ProposedLeaseId": {
+    "ProposedLeaseIdOptional": {
       "name": "x-ms-proposed-lease-id",
       "x-ms-client-name": "proposedLeaseId",
       "in": "header",
       "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method",
+      "description": "Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request) if the proposed lease ID is not in the correct format. See Guid Constructor (String) for a list of valid GUID string formats."
+    },
+    "ProposedLeaseIdRequired": {
+      "name": "x-ms-proposed-lease-id",
+      "x-ms-client-name": "proposedLeaseId",
+      "in": "header",
+      "required": true,
       "type": "string",
       "x-ms-parameter-location": "method",
       "description": "Proposed lease ID, in a GUID string format. The Blob service returns 400 (Invalid request) if the proposed lease ID is not in the correct format. See Guid Constructor (String) for a list of valid GUID string formats."
