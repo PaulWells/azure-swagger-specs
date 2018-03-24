@@ -16,6 +16,4 @@ directive:
   - suppress: R4000 # Missing description
   - suppress: R4001 # url defined in global param without extension
 
-  #- suppress: R2063 # OperationId format. This directive is commented out because although it is not necessary for code generation, fixing it will cause breaking changes to the generated code and so should be done for code generation.
-
 ```
