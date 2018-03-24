@@ -143,7 +143,7 @@
         "tags": [
           "service"
         ],
-        "operationId": "Service_GetStats",
+        "operationId": "Service_GetStatistics",
         "description": "Retrieves statistics related to replication for the Queue service. It is only available on the secondary location endpoint when read-access geo-redundant replication is enabled for the storage account.",
         "parameters": [
           {
@@ -208,8 +208,8 @@
         "tags": [
           "service"
         ],
-        "operationId": "Service_ListQueues",
-        "description": "The List Queues operation returns a list of the queues under the specified account",
+        "operationId": "Service_ListQueuesSegment",
+        "description": "The List Queues Segment operation returns a list of the queues under the specified account",
         "parameters": [
           {
             "$ref": "#/parameters/Prefix"
@@ -365,7 +365,7 @@
         "tags": [
           "queue"
         ],
-        "operationId": "Queues_GetMetadata",
+        "operationId": "Queues_GetProperties",
         "description": "Retrieves user-defined metadata and queue properties on the specified queue. Metadata is associated with the queue as name-values pairs.",
         "parameters": [
           {
@@ -471,7 +471,7 @@
         "tags": [
           "queue"
         ],
-        "operationId": "Queues_GetAcl",
+        "operationId": "Queues_GetAccessPolicy",
         "description": "returns details about any stored access policies specified on the queue that may be used with Shared Access Signatures.",
         "parameters": [
           {
@@ -514,7 +514,7 @@
         "tags": [
           "queue"
         ],
-        "operationId": "Queues_SetAcl",
+        "operationId": "Queues_SetAccessPolicy",
         "description": "sets stored access policies for the queue that may be used with Shared Access Signatures",
         "parameters": [
           {
@@ -570,8 +570,8 @@
         "tags": [
           "message"
         ],
-        "operationId": "Messages_Get",
-        "description": "The Get Messages operation retrieves one or more messages from the front of the queue.",
+        "operationId": "Messages_Dequeue",
+        "description": "The Dequeue operation retrieves one or more messages from the front of the queue.",
         "parameters": [
           {
             "$ref": "#/parameters/NumOfMessages"
@@ -620,7 +620,7 @@
           "message"
         ],
         "operationId": "Messages_Clear",
-        "description": "The Clear Messages operation deletes all messages from the specified queue.",
+        "description": "The Clear operation deletes all messages from the specified queue.",
         "parameters": [
           {
             "$ref": "#/parameters/Timeout"
@@ -662,8 +662,8 @@
         "tags": [
           "message"
         ],
-        "operationId": "Messages_Put",
-        "description": "The Put Message operation adds a new message to the back of the message queue. A visibility timeout can also be specified to make the message invisible until the visibility timeout expires. A message must be in a format that can be included in an XML request with UTF-8 encoding. The encoded message can be up to 64 KB in size for versions 2011-08-18 and newer, or 8 KB in size for previous versions.",
+        "operationId": "Messages_Enqueue",
+        "description": "The Enqueue operation adds a new message to the back of the message queue. A visibility timeout can also be specified to make the message invisible until the visibility timeout expires. A message must be in a format that can be included in an XML request with UTF-8 encoding. The encoded message can be up to 64 KB in size for versions 2011-08-18 and newer, or 8 KB in size for previous versions.",
         "parameters": [
           {
             "$ref": "#/parameters/QueueMessage"
@@ -718,7 +718,7 @@
           "message"
         ],
         "operationId": "Messages_Peek",
-        "description": "This operation retrieves one or more messages from the front of the queue, but does not alter the visibility of the message.",
+        "description": "The Peek operation retrieves one or more messages from the front of the queue, but does not alter the visibility of the message.",
         "parameters": [
           {
             "$ref": "#/parameters/NumOfMessages"
@@ -774,7 +774,7 @@
           "message"
         ],
         "operationId": "Messages_Update",
-        "description": "This operation was introduced with version 2011-08-18 of the Queue service API. The Update Message operation updates the visibility timeout of a message. You can also use this operation to update the contents of a message. A message must be in a format that can be included in an XML request with UTF-8 encoding, and the encoded message can be up to 64KB in size.",
+        "description": "The Update operation was introduced with version 2011-08-18 of the Queue service API. The Update Message operation updates the visibility timeout of a message. You can also use this operation to update the contents of a message. A message must be in a format that can be included in an XML request with UTF-8 encoding, and the encoded message can be up to 64KB in size.",
         "parameters": [
           {
             "$ref": "#/parameters/QueueMessage"
@@ -838,7 +838,7 @@
           "message"
         ],
         "operationId": "Messages_Delete",
-        "description": "The Delete Message operation deletes the specified message.",
+        "description": "The Delete operation deletes the specified message.",
         "parameters": [
           {
             "$ref": "#/parameters/PopReceipt"
