@@ -19,7 +19,7 @@
     ]
   },
   "securityDefinitions": {
-    "file_shared_key": {
+    "Files_shared_key": {
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
@@ -202,7 +202,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_Create",
+        "operationId": "Shares_Create",
         "description": "Creates a new share under the specified account. If the share with the same name already exists, the operation fails.",
         "parameters": [
           {
@@ -255,7 +255,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_GetProperties",
+        "operationId": "Shares_GetProperties",
         "description": "Returns all user-defined metadata and system properties for the specified share or share snapshot. The data returned does not include the share's list of files.",
         "parameters": [
           {
@@ -316,7 +316,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_Delete",
+        "operationId": "Shares_Delete",
         "description": "Operation marks the specified share or share snapshot for deletion. The share or share snapshot and any files contained within it are later deleted during garbage collection.",
         "parameters": [
           {
@@ -372,7 +372,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_CreateSnapshot",
+        "operationId": "Shares_CreateSnapshot",
         "description": "Creates a read-only snapshot of a share.",
         "parameters": [
           {
@@ -449,7 +449,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_SetQuota",
+        "operationId": "Shares_SetQuota",
         "description": "Sets quota for the specified share.",
         "parameters": [
           {
@@ -521,7 +521,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_SetMetadata",
+        "operationId": "Shares_SetMetadata",
         "description": "Sets one or more user-defined name-value pairs for the specified share.",
         "parameters": [
           {
@@ -593,7 +593,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_GetAccessPolicy",
+        "operationId": "Shares_GetAccessPolicy",
         "description": "Returns information about stored access policies specified on the share.",
         "parameters": [
           {
@@ -643,7 +643,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_SetAccessPolicy",
+        "operationId": "Shares_SetAccessPolicy",
         "description": "Sets a stored access policy for use with shared access signatures.",
         "parameters": [
           {
@@ -715,7 +715,7 @@
         "tags": [
           "share"
         ],
-        "operationId": "Share_GetStatistics",
+        "operationId": "Shares_GetStatistics",
         "description": "Retrieves statistics related to the share.",
         "parameters": [
           {
@@ -1107,7 +1107,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_Create",
+        "operationId": "Files_Create",
         "description": "Creates a new file or replaces a file. Note it only initializes the file with no content.",
         "parameters": [
           {
@@ -1192,7 +1192,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_Download",
+        "operationId": "Files_Download",
         "description": "Reads or downloads a file from the system, including its metadata and properties.",
         "parameters": [
           {
@@ -1471,7 +1471,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_GetProperties",
+        "operationId": "Files_GetProperties",
         "description": "Returns all user-defined metadata, standard HTTP properties, and system properties for the file. It does not return the content of the file.",
         "parameters": [
           {
@@ -1610,7 +1610,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_Delete",
+        "operationId": "Files_Delete",
         "description": "removes the file from the storage account.",
         "parameters": [
           {
@@ -1652,7 +1652,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_SetHTTPHeaders",
+        "operationId": "Files_SetHTTPHeaders",
         "description": "Sets HTTP headers on the file.",
         "parameters": [
           {
@@ -1744,7 +1744,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_SetMetadata",
+        "operationId": "Files_SetMetadata",
         "description": "Updates user-defined metadata for the specified file.",
         "parameters": [
           {
@@ -1807,7 +1807,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_UploadRange",
+        "operationId": "Files_UploadRange",
         "description": "Upload a range of bytes to a file.",
         "consumes":[
           "application/octet-stream"
@@ -1913,7 +1913,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_GetRangeList",
+        "operationId": "Files_GetRangeList",
         "description": "Returns the list of valid ranges for a file.",
         "parameters": [
           {
@@ -1993,7 +1993,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_StartCopy",
+        "operationId": "Files_StartCopy",
         "description": "Copies a blob or file to a destination file within the storage account.",
         "parameters": [
           {
@@ -2071,7 +2071,7 @@
         "tags": [
           "file"
         ],
-        "operationId": "File_AbortCopy",
+        "operationId": "Files_AbortCopy",
         "description": "Aborts a pending Copy File operation, and leaves a destination file with zero length and full metadata.",
         "parameters": [
           {
