@@ -1430,6 +1430,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -1582,6 +1583,7 @@
               "x-ms-blob-content-md5": {
                 "x-ms-client-name": "BlobContentMD5",
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has a MD5 hash, and if request contains range header (Range or x-ms-range), this response header is returned with the value of the whole blob's MD5 value. This value may or may not be equal to the value returned in Content-MD5 header, with the latter calculated from the requested range"
               }
             },
@@ -1623,6 +1625,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -1775,6 +1778,7 @@
               "x-ms-blob-content-md5": {
                 "x-ms-client-name": "BlobContentMD5",
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has a MD5 hash, and if request contains range header (Range or x-ms-range), this response header is returned with the value of the whole blob's MD5 value. This value may or may not be equal to the value returned in Content-MD5 header, with the latter calculated from the requested range"
               }
             },
@@ -1957,6 +1961,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -2176,6 +2181,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -2283,6 +2289,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -2393,6 +2400,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -3454,6 +3462,7 @@
             "headers": {
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -3570,6 +3579,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -3753,6 +3763,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-blob-sequence-number": {
@@ -3866,6 +3877,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-blob-sequence-number": {
@@ -4435,6 +4447,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -4653,7 +4666,8 @@
           "type": "string"
         },
         "Content-MD5": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Content-Disposition": {
           "type": "string"
@@ -5445,6 +5459,7 @@
       "in": "header",
       "required": false,
       "type": "string",
+      "format": "byte",
       "x-ms-parameter-location": "method",
       "description": "Optional. An MD5 hash of the blob content. Note that this hash is not validated, as the hashes for the individual blocks were validated when each was uploaded."
     },
