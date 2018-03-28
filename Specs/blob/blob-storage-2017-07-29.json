@@ -2978,15 +2978,15 @@
                 "format": "date-time-rfc1123",
                 "description": "Returns the date and time the blob was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
               },
-              "x-ms-lease-id": {
-                "x-ms-client-name": "LeaseId",
-                "type": "string",
-                "description": "Uniquely identifies a blob's lease"
-              },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
                 "type": "string",
                 "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+              },
+              "x-ms-lease-id": {
+                "x-ms-client-name": "LeaseId",
+                "type": "string",
+                "description": "Uniquely identifies a blobs's lease"
               },
               "x-ms-version": {
                 "x-ms-client-name": "Version",
@@ -4115,7 +4115,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_Resize",
+        "operationId": "PageBlobs_Resize",
         "description": "Resize the Blob",
         "parameters": [
           {
@@ -4201,7 +4201,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_UpdateSequenceNumber",
+        "operationId": "PageBlobs_UpdateSequenceNumber",
         "description": "Update the sequence number of the blob",
         "parameters": [
           {
