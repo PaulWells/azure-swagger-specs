@@ -2101,7 +2101,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "PageBlob_Create",
+        "operationId": "PageBlobs_Create",
         "description": "The Create operation creates a new page blob.",
         "consumes": [
           "application/octet-stream"
@@ -2215,7 +2215,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "AppendBlob_Create",
+        "operationId": "AppendBlobs_Create",
         "description": "The Create Append Blob operation creates a new append blob.",
         "consumes": [
           "application/octet-stream"
@@ -2323,7 +2323,7 @@
         "tags": [
           "blob"
         ],
-        "operationId": "BlockBlob_Upload",
+        "operationId": "BlockBlobs_Upload",
         "description": "The Upload Block Blob operation updates the content of an existing block blob. Updating an existing block blob overwrites any existing metadata on the blob. Partial updates are not supported with Put Blob; the content of the existing blob is overwritten with the content of the new blob. To perform a partial update of the content of a block blob, use the Put Block List operation.",
         "consumes": [
           "application/octet-stream"
@@ -3428,7 +3428,7 @@
         "tags": [
           "blockblob"
         ],
-        "operationId": "BlockBlob_StageBlock",
+        "operationId": "BlockBlobs_StageBlock",
         "description": "The Stage Block operation creates a new block to be committed as part of a blob",
         "consumes": [
           "application/octet-stream"
@@ -3506,7 +3506,7 @@
         "tags": [
           "blockblob"
         ],
-        "operationId": "BlockBlob_CommitBlockList",
+        "operationId": "BlockBlobs_CommitBlockList",
         "description": "The Commit Block List operation writes a blob by specifying the list of block IDs that make up the blob. In order to be written as part of a blob, a block must have been successfully written to the server in a prior Put Block operation. You can call Put Block List to update a blob by uploading only those blocks that have changed, then committing the new and existing blocks together. You can do this by specifying whether to commit a block from the committed block list or from the uncommitted block list, or to commit the most recently uploaded version of the block, whichever list it may belong to.",
         "parameters": [
           {
@@ -3610,7 +3610,7 @@
         "tags": [
           "blockblob"
         ],
-        "operationId": "BlockBlob_GetBlockList",
+        "operationId": "BlockBlobs_GetBlockList",
         "description": "The Get Block List operation retrieves the list of blocks that have been uploaded as part of a block blob",
         "parameters": [
           {
@@ -3695,7 +3695,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_UploadPages",
+        "operationId": "PageBlobs_UploadPages",
         "description": "The Upload Pages operation writes a range of pages to a page blob",
         "consumes": [
           "application/octet-stream"
@@ -3812,7 +3812,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_ClearPages",
+        "operationId": "PageBlobs_ClearPages",
         "description": "The Clear Pages operation clears a set of pages from a page blob",
         "consumes": [
           "application/octet-stream"
@@ -3926,7 +3926,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_GetPageRanges",
+        "operationId": "PageBlobs_GetPageRanges",
         "description": "The Get Page Ranges operation returns the list of valid page ranges for a page blob or snapshot of a page blob",
         "parameters": [
           {
@@ -4019,7 +4019,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_GetPageRangesDiff",
+        "operationId": "PageBlobs_GetPageRangesDiff",
         "description": "[Update] The Get Page Ranges Diff operation returns the list of valid page ranges for a page blob that were changed between target blob and previous snapshot.",
         "parameters": [
           {
@@ -4290,7 +4290,7 @@
         "tags": [
           "pageblob"
         ],
-        "operationId": "PageBlob_CopyIncremental",
+        "operationId": "PageBlobs_CopyIncremental",
         "description": "The Copy Incremental operation copies a snapshot of the source page blob to a destination page blob. The snapshot is copied such that only the differential changes between the previously copied snapshot are transferred to the destination. The copied snapshots are complete copies of the original snapshot and can be read or copied from as usual. This API is supported since REST version 2016-05-31.",
         "parameters": [
           {
@@ -4391,7 +4391,7 @@
         "tags": [
           "appendblob"
         ],
-        "operationId": "AppendBlob_AppendBlock",
+        "operationId": "AppendBlobs_AppendBlock",
         "description": "The Append Block operation commits a new block of data to the end of an existing append blob. The Append Block operation is permitted only if the blob was created with x-ms-blob-type set to AppendBlob. Append Block is supported only on version 2015-02-21 version or later.",
         "parameters": [
           {
