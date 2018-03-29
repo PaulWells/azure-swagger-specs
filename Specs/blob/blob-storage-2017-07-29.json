@@ -749,12 +749,9 @@
             "$ref": "#/parameters/Timeout"
           },
           {
-<<<<<<< HEAD
             "$ref": "#/parameters/LeaseIdOptional"
           },
           {
-=======
->>>>>>> 7c8284c437559068557b9bed3ed2829b9b917f93
             "$ref": "#/parameters/LeaseDuration"
           },
           {
