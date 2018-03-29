@@ -752,9 +752,6 @@
             "$ref": "#/parameters/LeaseIdOptional"
           },
           {
-            "$ref": "#/parameters/LeaseActionAcquire"
-          },
-          {
             "$ref": "#/parameters/LeaseDuration"
           },
           {
@@ -824,6 +821,22 @@
           "enum": [
             "container"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "acquire"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -840,9 +853,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionRelease"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -908,6 +918,22 @@
           "enum": [
             "container"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "release"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -924,9 +950,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionRenew"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -997,6 +1020,22 @@
           "enum": [
             "container"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "renew"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -1010,9 +1049,6 @@
         "parameters": [
           {
             "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionBreak"
           },
           {
             "$ref": "#/parameters/LeaseBreakPeriod"
@@ -1086,6 +1122,22 @@
           "enum": [
             "container"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "break"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -1102,9 +1154,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionChange"
           },
           {
             "$ref": "#/parameters/ProposedLeaseIdRequired"
@@ -1178,6 +1227,22 @@
           "enum": [
             "container"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "change"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -2122,9 +2187,6 @@
             "$ref": "#/parameters/BlobCacheControl"
           },
           {
-            "$ref": "#/parameters/BlobTypePage"
-          },
-          {
             "$ref": "#/parameters/Metadata"
           },
           {
@@ -2200,7 +2262,24 @@
           }
         }
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "x-ms-blob-type",
+          "x-ms-client-name": "blobType",
+          "in": "header",
+          "required": true,
+          "x-ms-parameter-location": "method",
+          "description": "Specifies the type of blob to create: block blob, page blob, or append blob.",
+          "type": "string",
+          "enum": [
+            "PageBlob"
+          ],
+          "x-ms-enum": {
+            "name": "BlobType",
+            "modelAsString": false
+          }
+        }
+      ]
     },
     "/{containerName}/{blob}?AppendBlob": {
       "put": {
@@ -2233,9 +2312,6 @@
           },
           {
             "$ref": "#/parameters/BlobCacheControl"
-          },
-          {
-            "$ref": "#/parameters/BlobTypeAppend"
           },
           {
             "$ref": "#/parameters/Metadata"
@@ -2307,7 +2383,24 @@
           }
         }
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "x-ms-blob-type",
+          "x-ms-client-name": "blobType",
+          "in": "header",
+          "required": true,
+          "x-ms-parameter-location": "method",
+          "description": "Specifies the type of blob to create: block blob, page blob, or append blob.",
+          "type": "string",
+          "enum": [
+            "AppendBlob"
+          ],
+          "x-ms-enum": {
+            "name": "BlobType",
+            "modelAsString": false
+          }
+        }
+      ]
     },
     "/{containerName}/{blob}?BlockBlob": {
       "put": {
@@ -2343,9 +2436,6 @@
           },
           {
             "$ref": "#/parameters/BlobCacheControl"
-          },
-          {
-            "$ref": "#/parameters/BlobTypeBlock"
           },
           {
             "$ref": "#/parameters/Metadata"
@@ -2417,7 +2507,24 @@
           }
         }
       },
-      "parameters": []
+      "parameters": [
+        {
+          "name": "x-ms-blob-type",
+          "x-ms-client-name": "blobType",
+          "in": "header",
+          "required": true,
+          "x-ms-parameter-location": "method",
+          "description": "Specifies the type of blob to create: block blob, page blob, or append blob.",
+          "type": "string",
+          "enum": [
+            "BlockBlob"
+          ],
+          "x-ms-enum": {
+            "name": "BlobType",
+            "modelAsString": false
+          }
+        }
+      ]
     },
     "/{containerName}/{blob}?comp=undelete": {
       "put": {
@@ -2894,9 +3001,6 @@
             "$ref": "#/parameters/LeaseIdOptional"
           },
           {
-            "$ref": "#/parameters/LeaseActionAcquire"
-          },
-          {
             "$ref": "#/parameters/LeaseDuration"
           },
           {
@@ -2963,6 +3067,22 @@
           "enum": [
             "lease"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "acquire"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -2979,9 +3099,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionRelease"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -3044,6 +3161,22 @@
           "enum": [
             "lease"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "release"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -3060,9 +3193,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionRenew"
           },
           {
             "$ref": "#/parameters/IfModifiedSince"
@@ -3130,6 +3260,22 @@
           "enum": [
             "lease"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "renew"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -3146,9 +3292,6 @@
           },
           {
             "$ref": "#/parameters/LeaseIdRequired"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionChange"
           },
           {
             "$ref": "#/parameters/ProposedLeaseIdRequired"
@@ -3219,6 +3362,22 @@
           "enum": [
             "lease"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "change"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -3232,9 +3391,6 @@
         "parameters": [
           {
             "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/LeaseActionBreak"
           },
           {
             "$ref": "#/parameters/LeaseBreakPeriod"
@@ -3305,6 +3461,22 @@
           "enum": [
             "lease"
           ]
+        },
+        {
+          "name": "x-ms-lease-action",
+          "x-ms-client-name": "action",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "break"
+          ],
+          "x-ms-enum": {
+            "name": "LeaseAction",
+            "modelAsString": false
+          },
+          "x-ms-parameter-location": "method",
+          "description": "Describes what lease action to take."
         }
       ]
     },
@@ -3521,9 +3693,6 @@
             "$ref": "#/parameters/LeaseIdOptional"
           },
           {
-            "$ref": "#/parameters/CopyActionAbort"
-          },
-          {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -3562,6 +3731,17 @@
           "enum": [
             "copy"
           ]
+        },
+        {
+          "name": "x-ms-copy-action",
+          "x-ms-client-name": "copyActionAbortConstant",
+          "in": "header",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "abort"
+          ],
+          "x-ms-parameter-location": "method"
         }
       ]
     },
@@ -3920,9 +4100,6 @@
             "$ref": "#/parameters/Range"
           },
           {
-            "$ref": "#/parameters/PageWriteUpdate"
-          },
-          {
             "$ref": "#/parameters/LeaseIdOptional"
           },
           {
@@ -4009,6 +4186,22 @@
           "enum": [
             "page"
           ]
+        },
+        {
+          "name": "x-ms-page-write",
+          "x-ms-client-name": "pageWrite",
+          "in": "header",
+          "required": true,
+          "x-ms-parameter-location": "method",
+          "description": "Required. You may specify one of the following options:\n  - Update: Writes the bytes specified by the request body into the specified range. The Range and Content-Length headers must match to perform the update.\n  - Clear: Clears the specified range and releases the space used in storage for that range. To clear a range, set the Content-Length header to zero, and the Range header to a value that indicates the range to clear, up to maximum blob size.",
+          "type": "string",
+          "enum": [
+            "update"
+          ],
+          "x-ms-enum": {
+            "name": "PageWriteType",
+            "modelAsString": false
+          }
         }
       ]
     },
@@ -4034,9 +4227,6 @@
           },
           {
             "$ref": "#/parameters/Range"
-          },
-          {
-            "$ref": "#/parameters/PageWriteClear"
           },
           {
             "$ref": "#/parameters/LeaseIdOptional"
@@ -4125,6 +4315,22 @@
           "enum": [
             "page"
           ]
+        },
+        {
+          "name": "x-ms-page-write",
+          "x-ms-client-name": "pageWrite",
+          "in": "header",
+          "required": true,
+          "x-ms-parameter-location": "method",
+          "description": "Required. You may specify one of the following options:\n  - Update: Writes the bytes specified by the request body into the specified range. The Range and Content-Length headers must match to perform the update.\n  - Clear: Clears the specified range and releases the space used in storage for that range. To clear a range, set the Content-Length header to zero, and the Range header to a value that indicates the range to clear, up to maximum blob size.",
+          "type": "string",
+          "enum": [
+            "clear"
+          ],
+          "x-ms-enum": {
+            "name": "PageWriteType",
+            "modelAsString": false
+          }
         }
       ]
     },
@@ -5523,72 +5729,6 @@
       "x-ms-parameter-location": "method",
       "description": "Set for page blobs only. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1."
     },
-    "BlobType": {
-      "name": "x-ms-blob-type",
-      "x-ms-client-name": "blobType",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Specifies the type of blob to create: block blob, page blob, or append blob.",
-      "type": "string",
-      "enum": [
-        "BlockBlob",
-        "PageBlob",
-        "AppendBlob"
-      ],
-      "x-ms-enum": {
-        "name": "BlobType",
-        "modelAsString": false
-      }
-    },
-    "BlobTypePage": {
-      "name": "x-ms-blob-type",
-      "x-ms-client-name": "blobTypePage",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Dummy (constant parameter)",
-      "type": "string",
-      "enum": [
-        "PageBlob"
-      ],
-      "x-ms-enum": {
-        "name": "BlobTypePage",
-        "modelAsString": false
-      }
-    },
-    "BlobTypeAppend": {
-      "name": "x-ms-blob-type",
-      "x-ms-client-name": "blobTypeAppend",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Dummy (constant parameter)",
-      "type": "string",
-      "enum": [
-        "AppendBlob"
-      ],
-      "x-ms-enum": {
-        "name": "BlobTypeAppend",
-        "modelAsString": false
-      }
-    },
-    "BlobTypeBlock": {
-      "name": "x-ms-blob-type",
-      "x-ms-client-name": "blobTypeBlock",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Dummy (constant parameter)",
-      "type": "string",
-      "enum": [
-        "BlockBlob"
-      ],
-      "x-ms-enum": {
-        "name": "BlobTypeBlock",
-        "modelAsString": false
-      }
-    },
     "BlockId": {
       "name": "blockid",
       "x-ms-client-name": "blockId",
@@ -5645,18 +5785,6 @@
       },
       "x-ms-parameter-location": "method",
       "description": "the acls for the container"
-    },
-    "CopyActionAbort": {
-      "name": "x-ms-copy-action",
-      "x-ms-client-name": "copyActionAbortConstant",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "abort"
-      ],
-      "x-ms-parameter-location": "method",
-      "description": "Dummy (constant parameter)"
     },
     "CopyId": {
       "name": "copyid",
@@ -5830,101 +5958,21 @@
       "x-ms-parameter-location": "method",
       "description": "Include this parameter to specify one or more datasets to include in the response."
     },
-    "ListContainersInclude": {
-      "name": "include",
-      "in": "query",
-      "required": false,
-      "type": "string",
-      "enum": [
-        "metadata"
-      ],
-      "x-ms-enum": {
-        "name": "ListContainersIncludeType",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Include this parameter to specify that the container's metadata be returned as part of the response body."
-    },
-    "LeaseActionAcquire": {
-      "name": "x-ms-lease-action",
-      "x-ms-client-name": "action",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "acquire"
-      ],
-      "x-ms-enum": {
-        "name": "LeaseActionAcquire",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Describes what lease action to take."
-    },
-    "LeaseActionBreak": {
-      "name": "x-ms-lease-action",
-      "x-ms-client-name": "action",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "break"
-      ],
-      "x-ms-enum": {
-        "name": "LeaseActionBreak",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Describes what lease action to take."
-    },
-    "LeaseActionRenew": {
-      "name": "x-ms-lease-action",
-      "x-ms-client-name": "action",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "renew"
-      ],
-      "x-ms-enum": {
-        "name": "LeaseActionRenew",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Describes what lease action to take."
-    },
-    "LeaseActionChange": {
-      "name": "x-ms-lease-action",
-      "x-ms-client-name": "action",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "change"
-      ],
-      "x-ms-enum": {
-        "name": "LeaseActionChange",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Describes what lease action to take."
-    },
-    "LeaseActionRelease": {
-      "name": "x-ms-lease-action",
-      "x-ms-client-name": "action",
-      "in": "header",
-      "required": true,
-      "type": "string",
-      "enum": [
-        "release"
-      ],
-      "x-ms-enum": {
-        "name": "LeaseActionRelease",
-        "modelAsString": false
-      },
-      "x-ms-parameter-location": "method",
-      "description": "Describes what lease action to take."
-    },
+    "ListContainersInclude": { 
+      "name": "include", 
+      "in": "query", 
+      "required": false, 
+      "type": "string", 
+      "enum": [ 
+        "metadata" 
+      ], 
+      "x-ms-enum": { 
+        "name": "ListContainersIncludeType", 
+        "modelAsString": false 
+      }, 
+      "x-ms-parameter-location": "method", 
+      "description": "Include this parameter to specify that the container's metadata be returned as part of the response body." 
+    }, 
     "LeaseBreakPeriod": {
       "name": "x-ms-lease-break-period",
       "x-ms-client-name": "breakPeriod",
@@ -5988,38 +6036,6 @@
       "x-ms-parameter-location": "method",
       "description": "Optional. Specifies a user-defined name-value pair associated with the blob. If no name-value pairs are specified, the operation will copy the metadata from the source blob or file to the destination blob. If one or more name-value pairs are specified, the destination blob is created with the specified metadata, and metadata is not copied from the source blob or file. Note that beginning with version 2009-09-19, metadata names must adhere to the naming rules for C# identifiers. See Naming and Referencing Containers, Blobs, and Metadata for more information.",
       "x-ms-header-collection-prefix": "x-ms-meta-"
-    },
-    "PageWriteUpdate": {
-      "name": "x-ms-page-write",
-      "x-ms-client-name": "pageWrite",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Required. You may specify one of the following options:\n  - Update: Writes the bytes specified by the request body into the specified range. The Range and Content-Length headers must match to perform the update.\n  - Clear: Clears the specified range and releases the space used in storage for that range. To clear a range, set the Content-Length header to zero, and the Range header to a value that indicates the range to clear, up to maximum blob size.",
-      "type": "string",
-      "enum": [
-        "update"
-      ],
-      "x-ms-enum": {
-        "name": "PageWriteType",
-        "modelAsString": false
-      }
-    },
-    "PageWriteClear": {
-      "name": "x-ms-page-write",
-      "x-ms-client-name": "pageWrite",
-      "in": "header",
-      "required": true,
-      "x-ms-parameter-location": "method",
-      "description": "Required. You may specify one of the following options:\n  - Update: Writes the bytes specified by the request body into the specified range. The Range and Content-Length headers must match to perform the update.\n  - Clear: Clears the specified range and releases the space used in storage for that range. To clear a range, set the Content-Length header to zero, and the Range header to a value that indicates the range to clear, up to maximum blob size.",
-      "type": "string",
-      "enum": [
-        "clear"
-      ],
-      "x-ms-enum": {
-        "name": "PageWriteType",
-        "modelAsString": false
-      }
     },
     "Prefix": {
       "name": "prefix",
