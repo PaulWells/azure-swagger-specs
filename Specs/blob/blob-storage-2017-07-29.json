@@ -784,6 +784,11 @@
                 "format": "date-time-rfc1123",
                 "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
               },
+              "x-ms-lease-id": {
+                "x-ms-client-name": "LeaseId",
+                "type": "string",
+                "description": "Uniquely identifies a container's lease"
+              },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
                 "type": "string",
@@ -1493,6 +1498,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -1645,6 +1651,7 @@
               "x-ms-blob-content-md5": {
                 "x-ms-client-name": "BlobContentMD5",
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has a MD5 hash, and if request contains range header (Range or x-ms-range), this response header is returned with the value of the whole blob's MD5 value. This value may or may not be equal to the value returned in Content-MD5 header, with the latter calculated from the requested range"
               }
             },
@@ -1686,6 +1693,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -1838,6 +1846,7 @@
               "x-ms-blob-content-md5": {
                 "x-ms-client-name": "BlobContentMD5",
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has a MD5 hash, and if request contains range header (Range or x-ms-range), this response header is returned with the value of the whole blob's MD5 value. This value may or may not be equal to the value returned in Content-MD5 header, with the latter calculated from the requested range"
               }
             },
@@ -2020,6 +2029,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "Content-Encoding": {
@@ -2211,7 +2221,7 @@
             "$ref": "#/parameters/BlobContentLengthOptional"
           },
           {
-            "$ref": "#/parameters/BlobSequenceNumberOptional"
+            "$ref": "#/parameters/BlobSequenceNumber"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -2236,6 +2246,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -2357,6 +2368,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -2481,6 +2493,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -2624,9 +2637,6 @@
             "$ref": "#/parameters/BlobContentDisposition"
           },
           {
-            "$ref": "#/parameters/BlobSequenceNumberOptional"
-          },
-          {
             "$ref": "#/parameters/ApiVersionParameter"
           },
           {
@@ -2636,223 +2646,6 @@
         "responses": {
           "200": {
             "description": "The properties were set successfully.",
-            "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-blob-sequence-number": {
-                "x-ms-client-name": "BlobSequenceNumber",
-                "type": "string",
-                "description": "The current sequence number for a page blob. This header is not returned for block blobs or append blobs"
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Blob service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "comp",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "properties"
-          ]
-        }
-      ]
-    },
-    "/{containerName}/{blob}?comp=properties&Resize": {
-      "put": {
-        "tags": [
-          "blob"
-        ],
-        "operationId": "Blobs_Resize",
-        "description": "Resize the Blob",
-        "parameters": [
-          {
-            "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/BlobCacheControl"
-          },
-          {
-            "$ref": "#/parameters/BlobContentType"
-          },
-          {
-            "$ref": "#/parameters/BlobContentMD5"
-          },
-          {
-            "$ref": "#/parameters/BlobContentEncoding"
-          },
-          {
-            "$ref": "#/parameters/BlobContentLanguage"
-          },
-          {
-            "$ref": "#/parameters/LeaseIdOptional"
-          },
-          {
-            "$ref": "#/parameters/IfModifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfUnmodifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfMatch"
-          },
-          {
-            "$ref": "#/parameters/IfNoneMatch"
-          },
-          {
-            "$ref": "#/parameters/BlobContentDisposition"
-          },
-          {
-            "$ref": "#/parameters/BlobContentLengthRequired"
-          },
-          {
-            "$ref": "#/parameters/BlobSequenceNumberOptional"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/ClientRequestId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The Blob was resized successfully",
-            "headers": {
-              "ETag": {
-                "type": "string",
-                "format": "etag",
-                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
-              },
-              "Last-Modified": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
-              },
-              "x-ms-blob-sequence-number": {
-                "x-ms-client-name": "BlobSequenceNumber",
-                "type": "string",
-                "description": "The current sequence number for a page blob. This header is not returned for block blobs or append blobs"
-              },
-              "x-ms-request-id": {
-                "x-ms-client-name": "RequestId",
-                "type": "string",
-                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
-              },
-              "x-ms-version": {
-                "x-ms-client-name": "Version",
-                "type": "string",
-                "description": "Indicates the version of the Blob service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
-              },
-              "Date": {
-                "type": "string",
-                "format": "date-time-rfc1123",
-                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
-              }
-            }
-          }
-        }
-      },
-      "parameters": [
-        {
-          "name": "comp",
-          "in": "query",
-          "required": true,
-          "type": "string",
-          "enum": [
-            "properties"
-          ]
-        }
-      ]
-    },
-    "/{containerName}/{blob}?comp=properties&UpdateSequenceNumber": {
-      "put": {
-        "tags": [
-          "blob"
-        ],
-        "operationId": "Blobs_UpdateSequenceNumber",
-        "description": "Update the sequence number of the blob",
-        "parameters": [
-          {
-            "$ref": "#/parameters/Timeout"
-          },
-          {
-            "$ref": "#/parameters/BlobCacheControl"
-          },
-          {
-            "$ref": "#/parameters/BlobContentType"
-          },
-          {
-            "$ref": "#/parameters/BlobContentMD5"
-          },
-          {
-            "$ref": "#/parameters/BlobContentEncoding"
-          },
-          {
-            "$ref": "#/parameters/BlobContentLanguage"
-          },
-          {
-            "$ref": "#/parameters/LeaseIdOptional"
-          },
-          {
-            "$ref": "#/parameters/IfModifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfUnmodifiedSince"
-          },
-          {
-            "$ref": "#/parameters/IfMatch"
-          },
-          {
-            "$ref": "#/parameters/IfNoneMatch"
-          },
-          {
-            "$ref": "#/parameters/BlobContentDisposition"
-          },
-          {
-            "$ref": "#/parameters/BlobContentLengthRequired"
-          },
-          {
-            "$ref": "#/parameters/SequenceNumberAction"
-          },
-          {
-            "$ref": "#/parameters/BlobSequenceNumberRequired"
-          },
-          {
-            "$ref": "#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "#/parameters/ClientRequestId"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The sequence numbers were updated successfully.",
             "headers": {
               "ETag": {
                 "type": "string",
@@ -3038,6 +2831,11 @@
                 "type": "string",
                 "format": "date-time-rfc1123",
                 "description": "Returns the date and time the blob was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
+              },
+              "x-ms-lease-id": {
+                "x-ms-client-name": "LeaseId",
+                "type": "string",
+                "description": "Uniquely identifies a blobs's lease"
               },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
@@ -3329,15 +3127,15 @@
                 "format": "date-time-rfc1123",
                 "description": "Returns the date and time the blob was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
               },
-              "x-ms-lease-id": {
-                "x-ms-client-name": "LeaseId",
-                "type": "string",
-                "description": "Uniquely identifies a blob's lease"
-              },
               "x-ms-request-id": {
                 "x-ms-client-name": "RequestId",
                 "type": "string",
                 "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+              },
+              "x-ms-lease-id": {
+                "x-ms-client-name": "LeaseId",
+                "type": "string",
+                "description": "Uniquely identifies a blobs's lease"
               },
               "x-ms-version": {
                 "x-ms-client-name": "Version",
@@ -3850,6 +3648,7 @@
             "headers": {
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -3966,6 +3765,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -4146,6 +3946,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-blob-sequence-number": {
@@ -4217,9 +4018,6 @@
         ],
         "parameters": [
           {
-            "$ref": "#/parameters/Body"
-          },
-          {
             "$ref": "#/parameters/ContentLength"
           },
           {
@@ -4275,6 +4073,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-blob-sequence-number": {
@@ -4523,6 +4322,181 @@
         }
       ]
     },
+    "/{containerName}/{blob}?comp=properties&Resize": {
+      "put": {
+        "tags": [
+          "pageblob"
+        ],
+        "operationId": "PageBlobs_Resize",
+        "description": "Resize the Blob",
+        "parameters": [
+          {
+            "$ref": "#/parameters/Timeout"
+          },
+          {
+            "$ref": "#/parameters/LeaseIdOptional"
+          },
+          {
+            "$ref": "#/parameters/IfModifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfUnmodifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          },
+          {
+            "$ref": "#/parameters/BlobContentLengthRequired"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ClientRequestId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The Blob was resized successfully",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "format": "etag",
+                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
+              },
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time-rfc1123",
+                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
+              },
+              "x-ms-blob-sequence-number": {
+                "x-ms-client-name": "BlobSequenceNumber",
+                "type": "string",
+                "description": "The current sequence number for a page blob. This header is not returned for block blobs or append blobs"
+              },
+              "x-ms-request-id": {
+                "x-ms-client-name": "RequestId",
+                "type": "string",
+                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+              },
+              "x-ms-version": {
+                "x-ms-client-name": "Version",
+                "type": "string",
+                "description": "Indicates the version of the Blob service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+              },
+              "Date": {
+                "type": "string",
+                "format": "date-time-rfc1123",
+                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "comp",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "properties"
+          ]
+        }
+      ]
+    },
+    "/{containerName}/{blob}?comp=properties&UpdateSequenceNumber": {
+      "put": {
+        "tags": [
+          "pageblob"
+        ],
+        "operationId": "PageBlobs_UpdateSequenceNumber",
+        "description": "Update the sequence number of the blob",
+        "parameters": [
+          {
+            "$ref": "#/parameters/Timeout"
+          },
+          {
+            "$ref": "#/parameters/LeaseIdOptional"
+          },
+          {
+            "$ref": "#/parameters/IfModifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfUnmodifiedSince"
+          },
+          {
+            "$ref": "#/parameters/IfMatch"
+          },
+          {
+            "$ref": "#/parameters/IfNoneMatch"
+          },
+          {
+            "$ref": "#/parameters/SequenceNumberAction"
+          },
+          {
+            "$ref": "#/parameters/BlobSequenceNumber"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ClientRequestId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The sequence numbers were updated successfully.",
+            "headers": {
+              "ETag": {
+                "type": "string",
+                "format": "etag",
+                "description": "The ETag contains a value that you can use to perform operations conditionally. If the request version is 2011-08-18 or newer, the ETag value will be in quotes."
+              },
+              "Last-Modified": {
+                "type": "string",
+                "format": "date-time-rfc1123",
+                "description": "Returns the date and time the container was last modified. Any operation that modifies the blob, including an update of the blob's metadata or properties, changes the last-modified time of the blob."
+              },
+              "x-ms-blob-sequence-number": {
+                "x-ms-client-name": "BlobSequenceNumber",
+                "type": "string",
+                "description": "The current sequence number for a page blob. This header is not returned for block blobs or append blobs"
+              },
+              "x-ms-request-id": {
+                "x-ms-client-name": "RequestId",
+                "type": "string",
+                "description": "This header uniquely identifies the request that was made and can be used for troubleshooting the request."
+              },
+              "x-ms-version": {
+                "x-ms-client-name": "Version",
+                "type": "string",
+                "description": "Indicates the version of the Blob service used to execute the request. This header is returned for requests made against version 2009-09-19 and above."
+              },
+              "Date": {
+                "type": "string",
+                "format": "date-time-rfc1123",
+                "description": "UTC date/time value generated by the service that indicates the time at which the response was initiated"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "comp",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "properties"
+          ]
+        }
+      ]
+    },
     "/{containerName}/{blob}?comp=incrementalcopy": {
       "put": {
         "tags": [
@@ -4685,6 +4659,7 @@
               },
               "Content-MD5": {
                 "type": "string",
+                "format": "byte",
                 "description": "If the blob has an MD5 hash and this operation is to read the full blob, this response header is returned so that the client can check for message content integrity."
               },
               "x-ms-request-id": {
@@ -4903,7 +4878,8 @@
           "type": "string"
         },
         "Content-MD5": {
-          "type": "string"
+          "type": "string",
+          "format": "byte"
         },
         "Content-Disposition": {
           "type": "string"
@@ -5695,6 +5671,7 @@
       "in": "header",
       "required": false,
       "type": "string",
+      "format": "byte",
       "x-ms-parameter-location": "method",
       "description": "Optional. An MD5 hash of the blob content. Note that this hash is not validated, as the hashes for the individual blocks were validated when each was uploaded."
     },
@@ -5707,22 +5684,11 @@
       "x-ms-parameter-location": "method",
       "description": "Optional. Sets the blob's content type. If specified, this property is stored with the blob and returned with a read request."
     },
-    "BlobSequenceNumberOptional": {
+    "BlobSequenceNumber": {
       "name": "x-ms-blob-sequence-number",
       "x-ms-client-name": "blobSequenceNumber",
       "in": "header",
       "required": false,
-      "type": "integer",
-      "format": "int64",
-      "default": 0,
-      "x-ms-parameter-location": "method",
-      "description": "Set for page blobs only. The sequence number is a user-controlled value that you can use to track requests. The value of the sequence number must be between 0 and 2^63 - 1."
-    },
-    "BlobSequenceNumberRequired": {
-      "name": "x-ms-blob-sequence-number",
-      "x-ms-client-name": "blobSequenceNumber",
-      "in": "header",
-      "required": true,
       "type": "integer",
       "format": "int64",
       "default": 0,
