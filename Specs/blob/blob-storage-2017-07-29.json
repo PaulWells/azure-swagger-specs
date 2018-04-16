@@ -2443,9 +2443,6 @@
             "$ref": "#/parameters/BlobContentLanguage"
           },
           {
-            "$ref": "#/parameters/ContentMD5"
-          },
-          {
             "$ref": "#/parameters/BlobContentMD5"
           },
           {
@@ -3627,9 +3624,6 @@
             "$ref": "#/parameters/ContentLength"
           },
           {
-            "$ref": "#/parameters/ContentMD5"
-          },
-          {
             "$ref": "#/parameters/Body"
           },
           {
@@ -3895,9 +3889,6 @@
           },
           {
             "$ref": "#/parameters/ContentLength"
-          },
-          {
-            "$ref": "#/parameters/ContentMD5"
           },
           {
             "$ref": "#/parameters/Timeout"
@@ -4619,9 +4610,6 @@
           },
           {
             "$ref": "#/parameters/ContentLength"
-          },
-          {
-            "$ref": "#/parameters/ContentMD5"
           },
           {
             "$ref": "#/parameters/LeaseIdOptional"
@@ -5823,16 +5811,6 @@
       },
       "x-ms-parameter-location": "method",
       "description": "the acls for the container"
-    },
-    "ContentMD5": {
-      "name": "ContentMD5",
-      "x-ms-client-name": "contentMD5",
-      "in": "header",
-      "required": false,
-      "type": "string",
-      "format": "byte",
-      "x-ms-parameter-location": "method",
-      "description": "This hash is used to verify the integrity of the page during transport"
     },
     "CopyId": {
       "name": "copyid",
