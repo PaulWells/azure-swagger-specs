@@ -5786,7 +5786,7 @@
     "Body": {
       "name": "body",
       "in": "body",
-      "required": true,
+      "required": false,
       "schema": {
         "type": "object",
         "format": "file"
